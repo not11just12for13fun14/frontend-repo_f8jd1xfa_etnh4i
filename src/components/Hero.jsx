@@ -1,4 +1,5 @@
 import Spline from '@splinetool/react-spline'
+import { motion } from 'framer-motion'
 
 export default function Hero() {
   return (
@@ -7,10 +8,22 @@ export default function Hero() {
         <Spline scene="https://prod.spline.design/FduaNp3csZktbOi3/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/70 to-slate-950/90 pointer-events-none" />
+      {/* parallax overlay accents */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-950/70 to-slate-950/90 pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      />
 
       <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <div className="max-w-2xl">
+        <motion.div
+          className="max-w-2xl"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-10% 0px' }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
           <span className="inline-flex items-center rounded-full border border-blue-500/30 bg-slate-900/50 px-3 py-1 text-xs text-blue-200">Disponible para proyectos</span>
           <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white drop-shadow-[0_0_30px_rgba(59,130,246,0.35)]">
             Desarrollador Web Full Stack
@@ -31,7 +44,7 @@ export default function Hero() {
               Ver proyectos
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -44,4 +44,31 @@
     --tw-exit-translate-x: initial;
     --tw-exit-translate-y: initial;
   }
+
+  /* Infinite marquee animations (ReactBits-style) */
+  @keyframes marqueeX {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marqueeXReverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  .animate-marquee-x-slow { animation: marqueeX 40s linear infinite; }
+  .animate-marquee-x { animation: marqueeX 24s linear infinite; }
+  .animate-marquee-x-fast { animation: marqueeX 14s linear infinite; }
+
+  .animate-marquee-x-reverse-slow { animation: marqueeXReverse 40s linear infinite; }
+  .animate-marquee-x-reverse { animation: marqueeXReverse 24s linear infinite; }
+  .animate-marquee-x-reverse-fast { animation: marqueeXReverse 14s linear infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee-x-slow,
+    .animate-marquee-x,
+    .animate-marquee-x-fast,
+    .animate-marquee-x-reverse-slow,
+    .animate-marquee-x-reverse,
+    .animate-marquee-x-reverse-fast { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+  }
 }

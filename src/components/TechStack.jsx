@@ -1,3 +1,5 @@
+import InfiniteMenu from './InfiniteMenu'
+
 const Badge = ({ children, level }) => (
   <div className="group relative rounded-xl border border-blue-500/20 bg-slate-900/60 px-3 py-2 text-sm text-blue-100 hover:border-blue-400/40 transition-colors">
     <span>{children}</span>
@@ -9,12 +11,22 @@ const Badge = ({ children, level }) => (
 )
 
 export default function TechStack() {
+  const allTech = [
+    'PHP', 'React', 'TypeScript', 'JavaScript', 'Node.js', 'Sass', 'Gulp', 'Vite', 'Laravel', 'WordPress', 'Java', 'HTML', 'CSS', 'Bootstrap', 'Tailwind', 'Git', 'GitHub', 'MySQL', 'MongoDB'
+  ]
+
   return (
     <section id="habilidades" className="py-24">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Habilidades</h2>
           <p className="mt-3 text-blue-100/90">Tecnologías con las que trabajo a diario.</p>
+        </div>
+
+        {/* Infinite tech ticker */}
+        <div className="mt-10 space-y-2">
+          <InfiniteMenu items={allTech} speed="normal" />
+          <InfiniteMenu items={allTech} reverse speed="slow" />
         </div>
 
         <div className="mt-12 grid gap-10 md:grid-cols-3">
